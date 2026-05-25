@@ -66,6 +66,11 @@ Expected result: `bird whoami` succeeds with cookie credentials.
 
 ---
 
+## Rebrand exploration (May 2026)
+
+Fresh icon/name concepts live in [`branding/rebrand-2026-05/icons`](./branding/rebrand-2026-05/icons).
+Current `icon.png` is set to the **Arcplume** concept for review.
+
 ## Security hardening
 
 See [SECURITY.md](./SECURITY.md) for:
