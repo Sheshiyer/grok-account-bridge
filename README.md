@@ -12,6 +12,12 @@
 
 ---
 
+<div align="center">
+
+<img src="./icon.png" alt="Grok Account Bridge icon" width="128" />
+
+</div>
+
 ## Why this exists
 
 Most Grok automations confuse API mode and signed-account mode. This skill makes the session-backed workflow explicit and safe:
