@@ -1,0 +1,37 @@
+name: Validate Skill
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate SKILL.md exists
+        run: test -f SKILL.md
+
+      - name: Validate required frontmatter keys
+        run: |
+          python - <<'PY'
+          import re, sys
+          t = open('SKILL.md', 'r', encoding='utf-8').read()
+          m = re.match(r'^---\n(.*?)\n---\n', t, re.S)
+          if not m:
+              print('Missing YAML frontmatter')
+              sys.exit(1)
+          fm = m.group(1)
+          for key in ('name:', 'description:'):
+              if key not in fm:
+                  print(f'Missing required key: {key}')
+                  sys.exit(1)
+          body = t[m.end():].strip()
+          if not body:
+              print('Body is empty')
+              sys.exit(1)
+          print('Frontmatter + body checks passed')
+          PY
